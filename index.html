@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Greg Miller</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <main class="indexContainer">
+      <div class="indexMenu">
+        <a href="index.html" class="indexMenuItem">DOG</a>
+        <a href="about.html" class="indexMenuItem">ABOUT</a>
+        <a href="resume.html" class="indexMenuItem">RESUME</a>
+        <a href="contact.html" class="indexMenuItem">CONTACT</a>
+      </div>
+      <div class="indexBackgroundImage"></div>
+    </main>
+  </body>
+
+  <script>
+    function setHovering(isHovering) {
+      var dom = document.getElementsByClassName("indexBackgroundImage")[0];
+      if (isHovering) {
+        dom.style.backgroundSize = "100vmax";
+      } else {
+        dom.style.backgroundSize = "110vmax";
+      }
+    }
+
+    var indexMenuItems = document.getElementsByClassName("indexMenuItems");
+    indexMenuItems.onmouseenter = setHovering(true);
+    indexMenuItems.onmouseleave = setHovering(false);
+
+    function setActiveIndex(idx) {
+      var dom = document.getElementsByClassName("indexBackgroundImage")[0];
+      dom.style.backgroundPosition = "center 45%"; // default
+      return function () {
+        if (!idx) {
+          dom.style.backgroundPosition = "center 45%";
+        } else if (idx === 0) {
+          dom.style.backgroundPosition = "center 50%";
+        } else if (idx === 1) {
+          dom.style.backgroundPosition = "center 55%";
+        } else if (idx === 2) {
+          dom.style.backgroundPosition = "center 60%";
+        } else {
+          dom.style.backgroundPosition = "center 65%";
+        }
+      };
+    }
+
+    var navLinks = document.getElementsByClassName("indexMenuItem");
+    for (var i = 0; i < navLinks.length; i++) {
+      navLinks[i].onmouseenter = setActiveIndex(i);
+    }
+  </script>
+</html>

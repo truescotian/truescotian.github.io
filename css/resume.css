@@ -1,0 +1,74 @@
+.container {
+  box-sizing: border-box;
+  padding: 0px 30px;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.companyInfo {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.contactList {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  margin-bottom: 0px;
+  padding-left: 0px;
+}
+
+.contactList li {
+  margin: 0px 15px;
+}
+
+.contactList li:first-child {
+  list-style-type: none;
+}
+
+.skillColumn {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.skillRow {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.positionTitle {
+  font-weight: 600;
+}
+
+.jobTitle {
+  margin-top: 60px;
+}
+
+@media (max-width: 950px) {
+  .container {
+    padding: 0px;
+    width: 90%;
+  }
+
+  .contactList li {
+    list-style-type: none;
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 550px) {
+  .contactList {
+    flex-flow: column nowrap;
+  }
+
+  .contactList li {
+    margin: 0px;
+  }
+
+  .skillRow {
+    flex-flow: column nowrap;
+  }
+}
