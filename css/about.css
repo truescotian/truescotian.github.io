@@ -5,6 +5,7 @@ main {
 }
 
 .page {
+  margin-top: 50px;
   flex: 1;
   display: flex;
   flex-flow: row nowrap;
@@ -44,6 +45,12 @@ main {
   font-size: 1em !important;
   line-height: 24px !important;
   text-align: justify;
+}
+
+.brainDump {
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
 }
 
 @media (max-width: 1250px) {
