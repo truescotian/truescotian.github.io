@@ -33,12 +33,12 @@
       <a link href="lessons.html">Lessons Learned</a>
       <a link href="trips.html">Trips</a>
 
-      <h3>Germany</h3>
+      <h3>California</h3>
       <div class="gallery" id="gallery"></div>
       
     </main>
     <script>
-        const awsBucketURL = "https://portfolio-current-2.s3.ca-central-1.amazonaws.com/trips/2024/germany/"
+        const awsBucketURL = "https://portfolio-current-2.s3.ca-central-1.amazonaws.com/trips/2021/california/"
         const imageList = [
             "1.jpg",
             "2.jpg",
@@ -56,11 +56,6 @@
             "14.jpg",
             "15.jpg",
             "16.jpg",
-            "17.jpg",
-            "18.jpg",
-            "19.jpg",
-            "20.jpg",
-            "21.jpg",
         ];
 
         const gallery = document.getElementById("gallery");
@@ -68,7 +63,7 @@
         imageList.forEach(image => {
             const imgElement = document.createElement("img");
             imgElement.src = awsBucketURL + image;
-            imgElement.alt = "Trip Image";
+            imgElement.alt = "California Trip Image";
             gallery.appendChild(imgElement);
         });
     </script>
