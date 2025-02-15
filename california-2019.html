@@ -7,68 +7,72 @@
     <link rel="shortcut icon" type="image/x-icon" href="static/favicon.jpg" />
 
     <style>
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            padding: 20px;
-        }
-        .gallery img {
-            max-width: 20%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        }
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 20px;
+      }
+      .gallery img {
+        max-width: 20%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      }
     </style>
   </head>
   <body>
     <main>
-      <h1 style="text-align: center">Trips</h1>
+      <header>
+        <h1 style="text-align: center">Trips</h1>
 
-      <a link href="index.html">Home</a>
-      <a link href="pets.html">Pets</a>
-      <a link href="resume.html">Resume<a>
-      <a link href="lessons.html">Lessons Learned</a>
-      <a link href="trips.html">Trips</a>
+        <div style="display: flex; justify-content: flex-start; gap: 10px">
+          <a link href="index.html">Home</a>
+          <a link href="pets.html">Pets</a>
+          <a link href="resume.html">Resume</a>
+          <a link href="lessons.html">Developer Lessons Learned</a>
+          <a link href="trips.html">Trips</a>
+        </div>
+      </header>
 
       <h3>California</h3>
       <div class="gallery" id="gallery"></div>
-      
     </main>
     <script>
-        const awsBucketURL = "https://portfolio-current-2.s3.ca-central-1.amazonaws.com/trips/2019/california/"
-        const imageList = [
-            "1.jpg",
-            "2.jpg",
-            "3.jpg",
-            "4.jpg",
-            "5.jpg",
-            "6.jpg",
-            "7.jpg",
-            "8.jpg",
-            "9.jpg",
-            "10.jpg",
-            "11.jpg",
-            "12.jpg",
-            "13.jpg",
-            "14.jpg",
-            "15.jpg",
-            "16.jpg",
-            "17.jpg",
-            "18.jpg",
-            "19.jpg",
-        ];
+      const awsBucketURL =
+        "https://portfolio-current-2.s3.ca-central-1.amazonaws.com/trips/2019/california/";
+      const imageList = [
+        "1.jpg",
+        "2.jpg",
+        "3.jpg",
+        "4.jpg",
+        "5.jpg",
+        "6.jpg",
+        "7.jpg",
+        "8.jpg",
+        "9.jpg",
+        "10.jpg",
+        "11.jpg",
+        "12.jpg",
+        "13.jpg",
+        "14.jpg",
+        "15.jpg",
+        "16.jpg",
+        "17.jpg",
+        "18.jpg",
+        "19.jpg",
+      ];
 
-        const gallery = document.getElementById("gallery");
-        
-        imageList.forEach(image => {
-            const imgElement = document.createElement("img");
-            imgElement.src = awsBucketURL + image;
-            imgElement.alt = "California Trip Image";
-            gallery.appendChild(imgElement);
-        });
+      const gallery = document.getElementById("gallery");
+
+      imageList.forEach((image) => {
+        const imgElement = document.createElement("img");
+        imgElement.src = awsBucketURL + image;
+        imgElement.alt = "California Trip Image";
+        gallery.appendChild(imgElement);
+      });
     </script>
   </body>
 </html>
