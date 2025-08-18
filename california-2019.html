@@ -73,6 +73,7 @@
       imageList.forEach((image) => {
         const src = awsBucketURL + image;
         const imgElement = document.createElement("img");
+        imgElement.loading = "lazy";
         imgElement.src = src;
         imgElement.alt = "Trip Image";
         const aElement = document.createElement("a");
