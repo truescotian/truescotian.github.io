@@ -15,7 +15,8 @@
         padding: 20px;
       }
       .gallery a {
-        max-width: 20%;
+        max-width: 100%;
+        width: 20%;
       }
       .gallery img {
         height: 100%;
@@ -23,6 +24,16 @@
         object-fit: cover;
         border-radius: 8px;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      @media (max-width: 768px) {
+        .gallery a {
+          width: 48%;
+        }
+      }
+      @media (max-width: 480px) {
+        .gallery a {
+          width: 100%;
+        }
       }
     </style>
   </head>
@@ -44,13 +55,14 @@
       <div class="gallery" id="gallery"></div>
     </main>
     <script>
-      const awsBucketURL =
-        "https://portfolio-current-2.s3.ca-central-1.amazonaws.com/trips/2024/germany/";
+      const awsS3Url =
+        "https://portfolio-current-2.s3.ca-central-1.amazonaws.com";
+      const awsBucketURL = `${awsS3Url}/trips/2024/germany/`;
+
       const imageList = [
         "1.webp",
         "2.webp",
         "3.webp",
-        "4.webp",
         "5.webp",
         "6.webp",
         "7.webp",
@@ -76,6 +88,7 @@
         imgElement.loading = "lazy";
         imgElement.src = src;
         imgElement.alt = "Trip Image";
+
         const aElement = document.createElement("a");
         aElement.href = src;
         aElement.target = "__blank";

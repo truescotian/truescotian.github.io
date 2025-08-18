@@ -24,6 +24,16 @@
         border-radius: 8px;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
       }
+      @media (max-width: 768px) {
+        .gallery a {
+          width: 48%;
+        }
+      }
+      @media (max-width: 480px) {
+        .gallery a {
+          width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
@@ -72,8 +82,10 @@
       imageList.forEach((image) => {
         const src = awsBucketURL + image;
         const imgElement = document.createElement("img");
+        imgElement.loading = "lazy";
         imgElement.src = src;
         imgElement.alt = "Trip Image";
+
         const aElement = document.createElement("a");
         aElement.href = src;
         aElement.target = "__blank";
