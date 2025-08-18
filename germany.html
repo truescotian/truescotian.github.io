@@ -66,8 +66,6 @@
         "17.webp",
         "18.webp",
         "19.webp",
-        "20.webp",
-        "21.webp",
       ];
 
       const gallery = document.getElementById("gallery");
@@ -77,6 +75,7 @@
         const imgElement = document.createElement("img");
         imgElement.src = src;
         imgElement.alt = "Trip Image";
+        imgElement.loading = "lazy";
         const aElement = document.createElement("a");
         aElement.href = src;
         aElement.target = "__blank";
