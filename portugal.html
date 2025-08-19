@@ -54,8 +54,9 @@
       <div class="gallery" id="gallery"></div>
     </main>
     <script>
-      const awsBucketURL =
-        "https://portfolio-current-2.s3.ca-central-1.amazonaws.com/trips/2022/portugal/";
+      const awsS3Url = "https://dc1heje8qmf1j.cloudfront.net";
+      const awsBucketURL = `${awsS3Url}/trips/2022/portugal/`;
+
       const imageList = [
         "1.jpg",
         "2.jpg",
