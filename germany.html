@@ -8,31 +8,33 @@
 
     <style>
       .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         gap: 10px;
         padding: 20px;
-      }
-      .gallery a {
-        max-width: 100%;
-        width: 20%;
-      }
-      .gallery img {
-        height: 100%;
         width: 100%;
+        box-sizing: border-box; /* include padding in width */
+        justify-items: stretch; /* make grid items fill each column */
+      }
+
+      .gallery a {
+        width: 100%;
+        display: block;
+      }
+
+      .gallery img {
+        width: 100%;
+        height: auto;
         object-fit: cover;
         border-radius: 8px;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        display: block;
       }
-      @media (max-width: 768px) {
-        .gallery a {
-          width: 48%;
-        }
-      }
+
+      /* Single column on very small screens */
       @media (max-width: 480px) {
-        .gallery a {
-          width: 100%;
+        .gallery {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -59,39 +61,65 @@
       const awsBucketURL = `${awsS3Url}/trips/2024/germany/`;
 
       const imageList = [
-        "1.webp",
-        "2.webp",
-        "3.webp",
-        "5.webp",
-        "6.webp",
-        "7.webp",
-        "8.webp",
-        "9.webp",
-        "10.webp",
-        "11.webp",
-        "12.webp",
-        "13.webp",
-        "14.webp",
-        "15.webp",
-        "16.webp",
-        "17.webp",
-        "18.webp",
-        "19.webp",
+        "1",
+        "2",
+        "3",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
       ];
 
       const gallery = document.getElementById("gallery");
 
+      // Common responsive sizes
+      const sizesArray = [480, 800, 1200, 1600];
+
+      // do this so you don't need to write a bunch of elements like <a><img></img></a>
       imageList.forEach((image) => {
-        const src = awsBucketURL + image;
+        // Construct srcset string for this image
+        const srcset = sizesArray
+          .map((size) => `${awsBucketURL}${image}-${size}.webp ${size}w`)
+          .join(",\n    ");
+
+        // Pick a fallback size (middle)
+        const src = `${awsBucketURL}${image}-800.webp`;
+
         const imgElement = document.createElement("img");
         imgElement.loading = "lazy";
         imgElement.src = src;
-        imgElement.alt = "Trip Image";
+        imgElement.srcset = srcset;
+
+        /* 
+          sizes attribute describes the layout width of the image in CSS:
+          - Mobile (less than 600px wide): full width (1 column)
+          - Tablet (less than 900px): ~50% width
+          - Desktop (less than 1200px): ~33%
+          - Larger screens: ~25%
+        */
+        imgElement.sizes = `(max-width: 600px) 100vw,
+                      (max-width: 900px) 50vw,
+                      (max-width: 1200px) 33vw,
+                      25vw`;
+
+        imgElement.alt = "An image from Greg's trip to Germany";
 
         const aElement = document.createElement("a");
-        aElement.href = src;
+        aElement.href = src; // links to the fallback image
         aElement.target = "__blank";
         aElement.appendChild(imgElement);
+
         gallery.appendChild(aElement);
       });
     </script>
